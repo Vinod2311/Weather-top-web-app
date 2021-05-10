@@ -8,7 +8,7 @@ public class Accounts extends Controller
 {
     public static void signup()
     {
-        render("signup.html");
+        render("signUp.html");
     }
 
     public static void login()
