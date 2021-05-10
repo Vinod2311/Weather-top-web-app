@@ -11,10 +11,11 @@ import java.util.List;
 @Entity
 public class Station extends Model {
     public String name;
-    public double lat;
-    public double lng;
+    public double latitude;
+    public double longitude;
     @OneToMany(cascade = CascadeType.ALL)
     public List<Reading> readings;
+
 
     /**
      * Constructor to create station with a name
@@ -22,8 +23,11 @@ public class Station extends Model {
 
     public Station(String name, double lat, double lng){
         this.name = name;
-        this.lat = lat;
-        this.lng = lng;
+        this.latitude = lat;
+        this.longitude = lng;
         readings = new ArrayList<>();
+
     }
+
+
 }

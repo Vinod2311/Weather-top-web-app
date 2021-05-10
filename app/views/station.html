@@ -8,6 +8,7 @@
     <h2 class="ui header">
         ${station.name}
     </h2>
+    #{latestReading station:station,latestReading:latestReading /}
     #{listReading station:station /}
     #{addReading station:station /}
 </section>
