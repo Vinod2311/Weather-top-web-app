@@ -17,7 +17,7 @@
                 <i class="right floated large blue cloud sun icon" ></i>
                 <div class="header">Weather</div>
                 <div class="description">
-                    <p>${_latestReading.code}</p>
+                    <p>${_latestReading.translatedWeatherCode}</p>
 
                 </div>
             </div>
@@ -28,7 +28,8 @@
                 <i class="right floated large blue thermometer icon" ></i>
                 <div class="header">Temp</div>
                 <div class="description">
-                    <p>${_latestReading.temperature}</p>
+                    <p>${_latestReading.temperature} C</p>
+                    <p>${_latestReading.temperatureFahrenheit} F</p>
 
                 </div>
             </div>
@@ -39,8 +40,11 @@
                 <i class="right floated large blue wind icon" ></i>
                 <div class="header">Wind</div>
                 <div class="description">
-                    <p>${_latestReading.windDirection}</p>
-                    <p>${_latestReading.windSpeed}</p>
+                    <p>${_latestReading.windBeaufort} bft</p>
+                    <p>${_latestReading.windDirectionCompass}</p>
+                    <p>Feels like</p>
+                    <p>${_latestReading.windChill} C</p>
+
                 </div>
             </div>
         </div>
@@ -50,7 +54,7 @@
                 <i class="right floated large blue pressure icon" ></i>
                 <div class="header">Pressure</div>
                 <div class="description">
-                    <p>${_latestReading.pressure}</p>
+                    <p>${_latestReading.pressure} kPa</p>
 
                 </div>
             </div>

@@ -2,7 +2,16 @@
     <div class="three fields">
         <div class="field">
             <label>Code</label>
-            <input placeholder="Code" type="number" name="code">
+            <select class="ui fluid dropdown" name="code">
+                <option>100</option>
+                <option>200</option>
+                <option>300</option>
+                <option>400</option>
+                <option>500</option>
+                <option>600</option>
+                <option>700</option>
+                <option>800</option>
+            </select>
         </div>
         <div class="field">
             <label>Temperature</label>
@@ -10,17 +19,17 @@
         </div>
         <div class="field">
             <label>Wind Speed</label>
-            <input placeholder="Wind Speed" type="number" name="windSpeed">
+            <input placeholder="Wind Speed" type="double" name="windSpeed">
         </div>
     </div>
     <div class="two fields">
         <div class="field">
             <label>Wind Direction</label>
-            <input placeholder="Code" type="number" name="windDirection">
+            <input placeholder="Code" type="double" name="windDirection">
         </div>
         <div class="field">
             <label>Pressure</label>
-            <input placeholder="Pressure" type="number" name="pressure">
+            <input placeholder="Pressure" type="double" name="pressure">
         </div>
     </div>
     <button class="ui blue submit button">Add Reading</button>
