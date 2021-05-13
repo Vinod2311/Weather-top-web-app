@@ -8,7 +8,9 @@
     <h2 class="ui header">
         ${station.name}
     </h2>
-    #{latestReading station:station,latestReading:latestReading /}
+    #{if station.latestReading != null }
+        #{latestReading station:station,latestReading: station.latestReading /}
+    #{/if}
     #{listReading station:station /}
     #{addReading station:station /}
 </section>

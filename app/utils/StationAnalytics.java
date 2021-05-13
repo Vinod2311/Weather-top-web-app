@@ -2,16 +2,30 @@ package utils;
 
 import models.Reading;
 import models.Station;
+import play.Logger;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 
 public class StationAnalytics {
 
 
-
+    public static Reading fillLatestReading(Station station){
+        if (station.readings.size()!=0) {
+            Reading latestReading = station.readings.get(station.readings.size() - 1);
+            StationAnalytics.translateWeatherCode(latestReading, latestReading.code);
+            StationAnalytics.celsiusToFahrenheit(latestReading, latestReading.temperature);
+            StationAnalytics.windChill(latestReading, latestReading.temperature, latestReading.windSpeed);
+            StationAnalytics.beaufortConversion(latestReading, latestReading.windSpeed);
+            StationAnalytics.windDirectionCompass(latestReading, latestReading.windDirection);
+            Logger.info("filled latest reading");
+            return latestReading;
+        }
+        return null;
+    }
 
 
     public static void celsiusToFahrenheit(Reading reading,double temperature){
@@ -117,6 +131,78 @@ public class StationAnalytics {
     public static double roundToTwoDecimal(double input){
 
         return (double) Math.round(input*100)/100;
+    }
+
+    public static void setMaxTemp(Station station){
+        double maxValue = 0.0;
+        if (station.readings.size() != 0){
+            maxValue = station.readings.get(0).temperature;
+        } for (Reading reading: station.readings){
+            if (reading.temperature > maxValue){
+                maxValue = reading.temperature;
+            }
+        }
+        station.maxTemp = roundToTwoDecimal(maxValue);
+    }
+
+    public static void setMinTemp(Station station){
+        double minValue = 0.0;
+        if (station.readings.size() != 0){
+            minValue = station.readings.get(0).temperature;
+        } for (Reading reading: station.readings){
+            if (reading.temperature < minValue){
+                minValue = reading.temperature;
+            }
+        }
+        station.minTemp = roundToTwoDecimal(minValue);
+    }
+
+    public static void setMaxWindBeaufort(Station station){
+        double maxValue = 0.0;
+        if (station.readings.size() != 0){
+            maxValue = station.readings.get(0).windBeaufort;
+        } for (Reading reading: station.readings){
+            if (reading.windBeaufort> maxValue){
+                maxValue = reading.windBeaufort;
+            }
+        }
+        station.maxWindBeaufort = roundToTwoDecimal(maxValue);
+    }
+
+    public static void setMinWindBeaufort(Station station){
+        double minValue = 0.0;
+        if (station.readings.size() != 0){
+            minValue = station.readings.get(0).windBeaufort;
+        } for (Reading reading: station.readings){
+            if (reading.windBeaufort < minValue){
+                minValue = reading.windBeaufort;
+            }
+        }
+        station.minWindBeaufort = roundToTwoDecimal(minValue);
+    }
+
+    public static void setMaxPressure(Station station){
+        double maxValue = 0.0;
+        if (station.readings.size() != 0){
+            maxValue = station.readings.get(0).pressure;
+        } for (Reading reading: station.readings){
+            if (reading.pressure > maxValue){
+                maxValue = reading.pressure;
+            }
+        }
+        station.maxPressure = roundToTwoDecimal(maxValue);
+    }
+
+    public static void setMinPressure(Station station){
+        double minValue = 0.0;
+        if (station.readings.size() != 0){
+            minValue = station.readings.get(0).pressure;
+        } for (Reading reading: station.readings){
+            if (reading.pressure < minValue){
+                minValue = reading.pressure;
+            }
+        }
+        station.minPressure = roundToTwoDecimal(minValue);
     }
 
 }

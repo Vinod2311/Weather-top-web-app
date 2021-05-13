@@ -14,6 +14,13 @@ public class Station extends Model {
     public String name;
     public double latitude;
     public double longitude;
+    public double maxTemp;
+    public double minTemp;
+    public double maxWindBeaufort;
+    public double minWindBeaufort;
+    public double maxPressure;
+    public double minPressure;
+    public Reading latestReading;
 
     @OneToMany(cascade = CascadeType.ALL)
     public List<Reading> readings;

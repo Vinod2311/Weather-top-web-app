@@ -1,22 +1,24 @@
 package models;
 import javax.persistence.Entity;
 
-import org.joda.time.DateTime;
+
 import play.db.jpa.Model;
-import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
 public class Reading extends Model {
     public Date date;
     public int code;
+
     public double temperature;
     public double windSpeed;
     public double windDirection;
+
     public double pressure;
     public String translatedWeatherCode;
     public double temperatureFahrenheit;
     public double windChill;
+
     public int windBeaufort;
     public String windDirectionCompass;
 

@@ -7,7 +7,11 @@
   <section class="ui segment">
     <h2 class="ui header">
       ${station.name}
+      #{if station.latestReading != null }
+        #{latestReading station:station,latestReading: station.latestReading /}
+      #{/if}
     </h2>
+
     <a href="/stations/${station.id}" > <i class="open folder link icon"></i> </a>
     <a href="/dashboard/deleteStation/${station.id}" > <i class="trash link icon"></i></a>
   </section>

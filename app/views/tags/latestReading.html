@@ -30,6 +30,8 @@
                 <div class="description">
                     <p>${_latestReading.temperature} C</p>
                     <p>${_latestReading.temperatureFahrenheit} F</p>
+                    <p>Max: ${_station.maxTemp} C</p>
+                    <p>Min: ${_station.minTemp} C</p>
 
                 </div>
             </div>
@@ -44,6 +46,8 @@
                     <p>${_latestReading.windDirectionCompass}</p>
                     <p>Feels like</p>
                     <p>${_latestReading.windChill} C</p>
+                    <p>Max: ${_station.maxWindBeaufort} bft</p>
+                    <p>Min: ${_station.minWindBeaufort} bft</p>
 
                 </div>
             </div>
@@ -55,6 +59,8 @@
                 <div class="header">Pressure</div>
                 <div class="description">
                     <p>${_latestReading.pressure} kPa</p>
+                    <p>Max: ${_station.maxPressure} kPa</p>
+                    <p>Min: ${_station.minPressure} kPa</p>
 
                 </div>
             </div>

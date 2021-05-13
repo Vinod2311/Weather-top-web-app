@@ -6,6 +6,7 @@ import play.db.jpa.GenericModel;
 import play.mvc.Controller;
 import models.Reading;
 import models.Station;
+import utils.StationAnalytics;
 
 import java.util.List;
 
@@ -15,6 +16,9 @@ public class Dashboard extends Controller
     Logger.info("Rendering Dashboard");
     Member member = Accounts.getLoggedInMember();
     List<Station> stations = member.stations;
+    for (Station station: stations){
+      station.latestReading = StationAnalytics.fillLatestReading(station);
+    }
     render ("dashboard.html", stations);
   }
 
