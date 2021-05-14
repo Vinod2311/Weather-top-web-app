@@ -20,6 +20,9 @@ public class Station extends Model {
     public double minWindBeaufort;
     public double maxPressure;
     public double minPressure;
+    public String trendTemp;
+    public String trendWindBeaufort;
+    public String trendPressure;
     public Reading latestReading;
 
     @OneToMany(cascade = CascadeType.ALL)

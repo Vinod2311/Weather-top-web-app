@@ -18,8 +18,9 @@ public class Dashboard extends Controller
     List<Station> stations = member.stations;
     for (Station station: stations){
       station.latestReading = StationAnalytics.fillLatestReading(station);
+      StationAnalytics.performStationAnalytics(station);
     }
-    render ("dashboard.html", stations);
+    render ("dashboard.html", stations,member);
   }
 
   public void addStation (String name, double lat, double lng)

@@ -21,10 +21,21 @@ public class StationAnalytics {
             StationAnalytics.windChill(latestReading, latestReading.temperature, latestReading.windSpeed);
             StationAnalytics.beaufortConversion(latestReading, latestReading.windSpeed);
             StationAnalytics.windDirectionCompass(latestReading, latestReading.windDirection);
-            Logger.info("filled latest reading");
             return latestReading;
         }
         return null;
+    }
+
+    public static void performStationAnalytics(Station station){
+        StationAnalytics.setMaxPressure(station);
+        StationAnalytics.setMaxWindBeaufort(station);
+        StationAnalytics.setMaxTemp(station);
+        StationAnalytics.setMinPressure(station);
+        StationAnalytics.setMinWindBeaufort(station);
+        StationAnalytics.setMinTemp(station);
+        StationAnalytics.trendInTemp(station);
+        StationAnalytics.trendInPressure(station);
+        StationAnalytics.trendInWindBeaufort(station);
     }
 
 
@@ -67,7 +78,7 @@ public class StationAnalytics {
     }
 
     public static void beaufortConversion(Reading reading, double windSpeed){
-        if (isBetween(windSpeed,0,1)){
+        if (windSpeed >= 0 && windSpeed < 1){
             reading.setWindBeaufort(0);
         }else if (isBetween(windSpeed,1,5)){
             reading.setWindBeaufort(1);
@@ -205,4 +216,55 @@ public class StationAnalytics {
         station.minPressure = roundToTwoDecimal(minValue);
     }
 
+
+    public static void trendInTemp(Station station){
+        if (station.readings.size()>=3) {
+            double lastReading = station.readings.get(station.readings.size() - 1).temperature;
+            double secondLastReading = station.readings.get(station.readings.size() - 2).temperature;
+            double thirdLastReading = station.readings.get(station.readings.size() - 3).temperature;
+            double differenceOne = lastReading - secondLastReading;
+            double differenceTwo = secondLastReading - thirdLastReading;
+            if (differenceOne < 0 && differenceTwo < 0) {
+                station.trendTemp = "falling";
+            } else if (differenceOne > 0 && differenceTwo > 0) {
+                station.trendTemp = "rising";
+            } else {
+                station.trendTemp = "steady";
+            }
+        }
+    }
+
+    public static void trendInWindBeaufort(Station station){
+        if (station.readings.size()>=3) {
+            double lastReading = station.readings.get(station.readings.size() - 1).windBeaufort;
+            double secondLastReading = station.readings.get(station.readings.size() - 2).windBeaufort;
+            double thirdLastReading = station.readings.get(station.readings.size() - 3).windBeaufort;
+            double differenceOne = lastReading - secondLastReading;
+            double differenceTwo = secondLastReading - thirdLastReading;
+            if (differenceOne < 0 && differenceTwo < 0) {
+                station.trendWindBeaufort = "falling";
+            } else if (differenceOne > 0 && differenceTwo > 0) {
+                station.trendWindBeaufort = "rising";
+            } else {
+                station.trendWindBeaufort = "steady";
+            }
+        }
+    }
+
+    public static void trendInPressure(Station station){
+        if (station.readings.size()>=3) {
+            double lastReading = station.readings.get(station.readings.size() - 1).pressure;
+            double secondLastReading = station.readings.get(station.readings.size() - 2).pressure;
+            double thirdLastReading = station.readings.get(station.readings.size() - 3).pressure;
+            double differenceOne = lastReading - secondLastReading;
+            double differenceTwo = secondLastReading - thirdLastReading;
+            if (differenceOne < 0 && differenceTwo < 0) {
+                station.trendPressure = "falling";
+            } else if (differenceOne > 0 && differenceTwo > 0) {
+                station.trendPressure = "rising";
+            } else {
+                station.trendPressure = "steady";
+            }
+        }
+    }
 }

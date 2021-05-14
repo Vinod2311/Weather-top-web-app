@@ -32,8 +32,17 @@
                     <p>${_latestReading.temperatureFahrenheit} F</p>
                     <p>Max: ${_station.maxTemp} C</p>
                     <p>Min: ${_station.minTemp} C</p>
-
+                    <p> ${_station.trendTemp}</p>
                 </div>
+                #{if _station.trendTemp == "rising"}
+                    <i class="right floated large blue arrow up icon" ></i>
+                #{/if}
+                #{if _station.trendTemp == "falling"}
+                    <i class="right floated large blue arrow down icon" ></i>
+                #{/if}
+                #{if _station.trendTemp == "steady"}
+                    <i class="right floated large blue exchange icon" ></i>
+                #{/if}
             </div>
         </div>
 
@@ -48,21 +57,37 @@
                     <p>${_latestReading.windChill} C</p>
                     <p>Max: ${_station.maxWindBeaufort} bft</p>
                     <p>Min: ${_station.minWindBeaufort} bft</p>
-
                 </div>
+                #{if _station.trendWindBeaufort == "rising"}
+                    <i class="right floated large blue arrow up icon" ></i>
+                #{/if}
+                #{if _station.trendWindBeaufort == "falling"}
+                    <i class="right floated large blue arrow down icon" ></i>
+                #{/if}
+                #{if _station.trendWindBeaufort == "steady"}
+                    <i class="right floated large blue exchange icon" ></i>
+                #{/if}
             </div>
         </div>
 
         <div class="card">
             <div class="content">
-                <i class="right floated large blue pressure icon" ></i>
+                <i class="right floated large blue cloud download icon" ></i>
                 <div class="header">Pressure</div>
                 <div class="description">
                     <p>${_latestReading.pressure} kPa</p>
                     <p>Max: ${_station.maxPressure} kPa</p>
                     <p>Min: ${_station.minPressure} kPa</p>
-
                 </div>
+                #{if _station.trendPressure == "rising"}
+                    <i class="right floated large blue arrow up icon" ></i>
+                #{/if}
+                #{if _station.trendPressure == "falling"}
+                    <i class="right floated large blue arrow down icon" ></i>
+                #{/if}
+                #{if _station.trendPressure == "steady"}
+                    <i class="right floated large blue exchange icon" ></i>
+                #{/if}
             </div>
         </div>
     </div>

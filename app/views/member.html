@@ -1,0 +1,29 @@
+#{extends 'main.html' /}
+#{set title:'Member' /}
+
+#{menu id:"member"/}
+
+<table class="ui celled padded table">
+    <thead>
+    <tr>
+        <th>Field</th>
+        <th>Value</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr>
+        <td data-label="Field">First Name</td>
+        <td data-label="Value">${member.firstname}</td>
+    </tr>
+    <tr>
+        <td data-label="Field">Last Name</td>
+        <td data-label="Value">${member.lastname}</td>
+    </tr>
+    <tr>
+        <td data-label="Field">Email</td>
+        <td data-label="Value">${member.email}</td>
+    </tr>
+    </tbody>
+</table>
+#{editMemberDetails/}

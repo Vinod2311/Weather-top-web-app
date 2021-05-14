@@ -16,6 +16,23 @@ public class Accounts extends Controller
         render("login.html");
     }
 
+    public static void member()
+    {
+        Member member = getLoggedInMember();
+        render("member.html",member);
+    }
+
+    public static void editMemberDetails(String firstname,String lastname,String email, String password)
+    {
+        Member member = getLoggedInMember();
+        member.firstname = firstname;
+        member.lastname = lastname;
+        member.password = password;
+        member.email = email;
+        member.save();
+        redirect("/member");
+    }
+
     public static void register(String firstname, String lastname, String email, String password)
     {
         Logger.info("Registering new user " + email);
