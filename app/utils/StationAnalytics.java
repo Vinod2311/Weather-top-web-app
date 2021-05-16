@@ -23,15 +23,21 @@ public class StationAnalytics {
   }
 
   public static void performStationAnalytics(Station station) {
-    StationAnalytics.setMaxPressure(station);
-    StationAnalytics.setMaxWindBeaufort(station);
-    StationAnalytics.setMaxTemp(station);
-    StationAnalytics.setMinPressure(station);
-    StationAnalytics.setMinWindBeaufort(station);
-    StationAnalytics.setMinTemp(station);
-    StationAnalytics.trendInTemp(station);
-    StationAnalytics.trendInPressure(station);
-    StationAnalytics.trendInWindBeaufort(station);
+    setMaxPressure(station);
+    setMaxWindBeaufort(station);
+    setMaxTemp(station);
+    setMinPressure(station);
+    setMinWindBeaufort(station);
+    setMinTemp(station);
+    trendInTemp(station);
+    trendInPressure(station);
+    trendInWindSpeed(station);
+    latAndLngToTwoDecimal(station);
+  }
+
+  public static void latAndLngToTwoDecimal(Station station){
+    station.latitude = roundToTwoDecimal(station.latitude);
+    station.longitude = roundToTwoDecimal(station.longitude);
   }
 
 
@@ -234,19 +240,19 @@ public class StationAnalytics {
     }
   }
 
-  public static void trendInWindBeaufort(Station station) {
+  public static void trendInWindSpeed(Station station) {
     if (station.readings.size() >= 3) {
-      double lastReading = station.readings.get(station.readings.size() - 1).windBeaufort;
-      double secondLastReading = station.readings.get(station.readings.size() - 2).windBeaufort;
-      double thirdLastReading = station.readings.get(station.readings.size() - 3).windBeaufort;
+      double lastReading = station.readings.get(station.readings.size() - 1).windSpeed;
+      double secondLastReading = station.readings.get(station.readings.size() - 2).windSpeed;
+      double thirdLastReading = station.readings.get(station.readings.size() - 3).windSpeed;
       double differenceOne = lastReading - secondLastReading;
       double differenceTwo = secondLastReading - thirdLastReading;
       if (differenceOne < 0 && differenceTwo < 0) {
-        station.trendWindBeaufort = "falling";
+        station.trendWindSpeed = "falling";
       } else if (differenceOne > 0 && differenceTwo > 0) {
-        station.trendWindBeaufort = "rising";
+        station.trendWindSpeed = "rising";
       } else {
-        station.trendWindBeaufort = "steady";
+        station.trendWindSpeed = "steady";
       }
     }
   }

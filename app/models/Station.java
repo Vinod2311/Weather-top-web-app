@@ -21,7 +21,7 @@ public class Station extends Model {
   public double maxPressure;
   public double minPressure;
   public String trendTemp;
-  public String trendWindBeaufort;
+  public String trendWindSpeed;
   public String trendPressure;
   public Reading latestReading;
 

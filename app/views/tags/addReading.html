@@ -15,22 +15,22 @@
       </select>
     </div>
     <div class="field">
-      <label>Temperature</label>
-      <input placeholder="Temperature" type="number" step="0.1" name="temperature">
+      <label>Temperature (<span>&#176;</span>C)</label>
+      <input placeholder="Temperature" type="number" step="0.1" min="-50" max="70" name="temperature">
     </div>
     <div class="field">
-      <label>Wind Speed</label>
-      <input placeholder="Wind Speed" type="number" step="0.1" name="windSpeed">
+      <label>Wind Speed (km/hr)</label>
+      <input placeholder="Wind Speed" type="number" step="0.1" min="0" max="117" name="windSpeed">
     </div>
   </div>
   <div class="two fields">
     <div class="field">
-      <label>Wind Direction</label>
-      <input placeholder="Wind Direction" type="number" step="0.1" name="windDirection">
+      <label>Wind Direction (<span>&#176;</span>)</label>
+      <input placeholder="Wind Direction" type="number" step="0.1" min="0" max="360" name="windDirection">
     </div>
     <div class="field">
-      <label>Pressure</label>
-      <input placeholder="Pressure" type="number" step="0.1" name="pressure">
+      <label>Pressure (mbar)</label>
+      <input placeholder="Pressure" type="number" step="0.1" min="0" max="1100" name="pressure">
     </div>
   </div>
   <button class="ui blue submit button">Add Reading</button>

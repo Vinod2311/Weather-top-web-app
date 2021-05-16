@@ -5,8 +5,8 @@
       <i class="huge right floated blue city icon"></i>
       <div class="header">${_station.name}</div>
       <div class="description">
-        <p>Lat: ${_station.latitude}</p>
-        <p>Lng: ${_station.longitude}</p>
+        <p>Lat: ${_station.latitude} <span>&#176;</span></p>
+        <p>Lng: ${_station.longitude} <span>&#176;</span></p>
       </div>
     </div>
   </div>
@@ -28,21 +28,23 @@
       <i class="huge right floated blue thermometer icon"></i>
       <div class="header">Temp</div>
       <div class="description">
-        <p>${_latestReading.temperature} C</p>
+        <p>${_latestReading.temperature} <span>&#176;</span>C</p>
         <p>${_latestReading.temperatureFahrenheit} F</p>
-        <p>Max: ${_station.maxTemp} C</p>
-        <p>Min: ${_station.minTemp} C</p>
+        <br>
+        #{if _station.trendTemp == "rising"}
+        <i class="huge right floated orange arrow up icon"></i>
+        #{/if}
+        #{if _station.trendTemp == "falling"}
+        <i class="huge right floated green arrow down icon"></i>
+        #{/if}
+        #{if _station.trendTemp == "steady"}
+        <i class="huge right floated teal arrow right icon"></i>
+        #{/if}
+        <p>Max: ${_station.maxTemp} <span>&#176;</span>C</p>
+        <p>Min: ${_station.minTemp} <span>&#176;</span>C</p>
         <p> ${_station.trendTemp}</p>
       </div>
-      #{if _station.trendTemp == "rising"}
-      <i class="huge right floated blue arrow up icon"></i>
-      #{/if}
-      #{if _station.trendTemp == "falling"}
-      <i class="huge right floated blue arrow down icon"></i>
-      #{/if}
-      #{if _station.trendTemp == "steady"}
-      <i class="huge right floated blue exchange icon"></i>
-      #{/if}
+
     </div>
   </div>
 
@@ -53,20 +55,24 @@
       <div class="description">
         <p>${_latestReading.windBeaufort} bft</p>
         <p>${_latestReading.windDirectionCompass}</p>
-        <p>Feels like</p>
-        <p>${_latestReading.windChill} C</p>
+
+        #{if _station.trendWindSpeed == "rising"}
+        <i class="huge right floated orange arrow up icon"></i>
+        #{/if}
+        #{if _station.trendWindSpeed == "falling"}
+        <i class="huge right floated green arrow down icon"></i>
+        #{/if}
+        #{if _station.trendWindSpeed == "steady"}
+        <i class="huge right floated teal arrow right icon"></i>
+        #{/if}
+        <br>
+        <p>Feels like:</p>
+        <p>${_latestReading.windChill} <span>&#176;</span>C</p>
+        <br>
         <p>Max: ${_station.maxWindBeaufort} bft</p>
         <p>Min: ${_station.minWindBeaufort} bft</p>
       </div>
-      #{if _station.trendWindBeaufort == "rising"}
-      <i class="huge right floated orange arrow up icon"></i>
-      #{/if}
-      #{if _station.trendWindBeaufort == "falling"}
-      <i class="huge right floated olive arrow down icon"></i>
-      #{/if}
-      #{if _station.trendWindBeaufort == "steady"}
-      <i class="huge right floated green exchange icon"></i>
-      #{/if}
+
     </div>
   </div>
 
@@ -76,18 +82,20 @@
       <div class="header">Pressure</div>
       <div class="description">
         <p>${_latestReading.pressure} kPa</p>
+        <br>
+        #{if _station.trendPressure == "rising"}
+        <i class="huge right floated orange arrow up icon"></i>
+        #{/if}
+        #{if _station.trendPressure == "falling"}
+        <i class="huge right floated green arrow down icon"></i>
+        #{/if}
+        #{if _station.trendPressure == "steady"}
+        <i class="huge right floated teal arrow right icon"></i>
+        #{/if}
         <p>Max: ${_station.maxPressure} kPa</p>
         <p>Min: ${_station.minPressure} kPa</p>
       </div>
-      #{if _station.trendPressure == "rising"}
-      <i class="huge right floated blue arrow up icon"></i>
-      #{/if}
-      #{if _station.trendPressure == "falling"}
-      <i class="huge right floated blue arrow down icon"></i>
-      #{/if}
-      #{if _station.trendPressure == "steady"}
-      <i class="huge right floated blue exchange icon"></i>
-      #{/if}
+
     </div>
   </div>
 </div>
