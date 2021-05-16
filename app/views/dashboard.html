@@ -3,18 +3,23 @@
 
 #{menu id:"dashboard"/}
 <h1>Welcome ${member.firstname}</h1>
-<a href="/member" > <i class="open folder link icon"></i> </a>
-#{list items:stations, as:'station'}
-  <section class="ui segment">
-    <h2 class="ui header">
-      ${station.name}
-      #{if station.latestReading != null }
-        #{latestReading station:station,latestReading: station.latestReading /}
-      #{/if}
-    </h2>
+<a href="/member">
+  <button class="ui green button">Edit Your Personal Details</button>
+</a>
 
-    <a href="/stations/${station.id}" > <i class="open folder link icon"></i> </a>
-    <a href="/dashboard/deleteStation/${station.id}" > <i class="trash link icon"></i></a>
-  </section>
+
+#{list items:stations, as:'station'}
+<section class="ui segment">
+  <h2 class="ui header">
+    ${station.name}
+  </h2>
+  #{if station.latestReading != null }
+  #{latestReading station:station,latestReading: station.latestReading /}
+  #{/if}
+  <br>
+  <a href="/stations/${station.id}"> <i class="teal big open folder link icon"></i> </a>
+  <a href="/dashboard/deleteStation/${station.id}"> <i class="red big trash link icon"></i></a>
+</section>
 #{/list}
 #{addStation /}
+<br>

@@ -5,12 +5,13 @@
 
 
 <section class="ui segment">
-    <h2 class="ui header">
-        ${station.name}
-    </h2>
-    #{if station.latestReading != null }
-        #{latestReading station:station,latestReading: station.latestReading /}
-    #{/if}
-    #{listReading station:station /}
-    #{addReading station:station /}
+  <h2 class="ui header">
+    ${station.name}
+  </h2>
+  #{if station.latestReading != null }
+  #{latestReading station:station,latestReading: station.latestReading /}
+  #{/if}
+  #{listReading station:station /}
+  #{addReading station:station /}
 </section>
+<br>
