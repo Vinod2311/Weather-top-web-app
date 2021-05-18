@@ -6,22 +6,38 @@ import models.Station;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ * A utility class includes methods used to calculate trends and conversion
+ * in the weather reading
+ */
 public class StationAnalytics {
 
 
+  /**
+   * Fill the latest-reading field of the inputted station with converted
+   * weather readings
+   *
+   * @param station
+   * @return
+   */
   public static Reading fillLatestReading(Station station) {
     if (station.readings.size() != 0) {
       Reading latestReading = station.readings.get(station.readings.size() - 1);
-      StationAnalytics.translateWeatherCode(latestReading, latestReading.code);
-      StationAnalytics.celsiusToFahrenheit(latestReading, latestReading.temperature);
-      StationAnalytics.windChill(latestReading, latestReading.temperature, latestReading.windSpeed);
-      StationAnalytics.beaufortConversion(latestReading, latestReading.windSpeed);
-      StationAnalytics.windDirectionCompass(latestReading, latestReading.windDirection);
+      translateWeatherCode(latestReading, latestReading.code);
+      celsiusToFahrenheit(latestReading, latestReading.temperature);
+      windChill(latestReading, latestReading.temperature, latestReading.windSpeed);
+      beaufortConversion(latestReading, latestReading.windSpeed);
+      windDirectionCompass(latestReading, latestReading.windDirection);
       return latestReading;
     }
     return null;
   }
 
+  /**
+   * Calculates and sets trends of the weather readings in a station
+   *
+   * @param station
+   */
   public static void performStationAnalytics(Station station) {
     setMaxPressure(station);
     setMaxWindBeaufort(station);
@@ -35,7 +51,12 @@ public class StationAnalytics {
     latAndLngToTwoDecimal(station);
   }
 
-  public static void latAndLngToTwoDecimal(Station station){
+  /**
+   * Rounds longitude and latitude value of a station to 2 decimal places
+   *
+   * @param station
+   */
+  public static void latAndLngToTwoDecimal(Station station) {
     station.latitude = roundToTwoDecimal(station.latitude);
     station.longitude = roundToTwoDecimal(station.longitude);
   }
@@ -73,6 +94,14 @@ public class StationAnalytics {
     }
   }
 
+  /**
+   * Calculates if inputted value is between some lower and upper bound
+   *
+   * @param x     input
+   * @param lower lower bound
+   * @param upper upper bound
+   * @return true if x is in range, false if x is not in range
+   */
   public static boolean isBetween(double x, double lower, double upper) {
     return (lower <= x && x <= upper);
   }
@@ -139,6 +168,12 @@ public class StationAnalytics {
     }
   }
 
+  /**
+   * Rounds any double input to 2 decimal places
+   *
+   * @param input
+   * @return
+   */
   public static double roundToTwoDecimal(double input) {
 
     return (double) Math.round(input * 100) / 100;

@@ -2,11 +2,13 @@ package models;
 
 import javax.persistence.Entity;
 
-
 import play.db.jpa.Model;
 
 import java.util.Date;
 
+/**
+ * Class to store weather readings and their converted forms.
+ */
 @Entity
 public class Reading extends Model {
   public Date date;

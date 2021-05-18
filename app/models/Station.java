@@ -9,6 +9,9 @@ import javax.persistence.OneToMany;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Station class to store readings and weather trends
+ */
 @Entity
 public class Station extends Model {
   public String name;
@@ -24,13 +27,12 @@ public class Station extends Model {
   public String trendWindSpeed;
   public String trendPressure;
   public Reading latestReading;
-
   @OneToMany(cascade = CascadeType.ALL)
   public List<Reading> readings;
 
 
   /**
-   * Constructor to create station with a name
+   * Constructor to create station with a name, latitude and longitude.
    */
 
   public Station(String name, double lat, double lng) {

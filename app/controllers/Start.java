@@ -3,6 +3,9 @@ package controllers;
 import play.Logger;
 import play.mvc.Controller;
 
+/**
+ * Controller class to display the Start page
+ */
 public class Start extends Controller {
   public static void index() {
     Logger.info("Rendering Start");

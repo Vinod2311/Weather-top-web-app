@@ -1,0 +1,160 @@
+12:51:02,133 INFO  ~ Starting C:\Users\vinod\Documents\web-development\play-framework\weather-top
+12:51:02,189 INFO  ~ Precompiling ...
+12:51:07,335 INFO  ~ HikariPool-1 - Starting...
+12:51:07,359 INFO  ~ HikariPool-1 - Start completed.
+12:51:07,388 INFO  ~ Connected to jdbc:h2:mem:play for default
+12:51:08,802 INFO  ~ Application 'weather-top' is now started !
+12:51:09,042 WARN  ~ SQL Error: 42102, SQLState: 42S02
+12:51:09,042 ERROR ~ Table "STATION" not found; SQL statement:
+select count(*) as col_0_0_ from Station station0_ [42102-196]
+12:51:09,058 ERROR ~ 
+
+@7jmcd91kp
+Error during job execution (views.Bootstrap)
+
+Execution exception (In /app/views/Bootstrap.java around line 12)
+PersistenceException occurred : org.hibernate.exception.SQLGrammarException: could not prepare statement
+
+play.exceptions.JavaExecutionException: org.hibernate.exception.SQLGrammarException: could not prepare statement
+	at play.jobs.Job.call(Job.java:241)
+	at Invocation.Job(Play!)
+Caused by: javax.persistence.PersistenceException: org.hibernate.exception.SQLGrammarException: could not prepare statement
+	at org.hibernate.internal.ExceptionConverterImpl.convert(ExceptionConverterImpl.java:154)
+	at org.hibernate.internal.ExceptionConverterImpl.convert(ExceptionConverterImpl.java:181)
+	at org.hibernate.query.internal.AbstractProducedQuery.list(AbstractProducedQuery.java:1538)
+	at org.hibernate.query.internal.AbstractProducedQuery.getSingleResult(AbstractProducedQuery.java:1577)
+	at play.db.jpa.JPQL.count(JPQL.java:31)
+	at models.Station.count(Station.java)
+	at views.Bootstrap.doJob(Bootstrap.java:12)
+	at play.jobs.Job.doJobWithResult(Job.java:64)
+	at play.jobs.Job$2.apply(Job.java:224)
+	at play.db.jpa.JPA.withTransaction(JPA.java:285)
+	at play.db.jpa.JPA.withinFilter(JPA.java:238)
+	at play.db.jpa.JPAPlugin$TransactionalFilter.withinFilter(JPAPlugin.java:304)
+	at play.jobs.Job.withinFilter(Job.java:201)
+	at play.jobs.Job.call(Job.java:220)
+	... 1 more
+Caused by: org.hibernate.exception.SQLGrammarException: could not prepare statement
+	at org.hibernate.exception.internal.SQLStateConversionDelegate.convert(SQLStateConversionDelegate.java:106)
+	at org.hibernate.exception.internal.StandardSQLExceptionConverter.convert(StandardSQLExceptionConverter.java:42)
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:113)
+	at org.hibernate.engine.jdbc.internal.StatementPreparerImpl$StatementPreparationTemplate.prepareStatement(StatementPreparerImpl.java:182)
+	at org.hibernate.engine.jdbc.internal.StatementPreparerImpl.prepareQueryStatement(StatementPreparerImpl.java:148)
+	at org.hibernate.loader.Loader.prepareQueryStatement(Loader.java:1990)
+	at org.hibernate.loader.Loader.executeQueryStatement(Loader.java:1920)
+	at org.hibernate.loader.Loader.executeQueryStatement(Loader.java:1898)
+	at org.hibernate.loader.Loader.doQuery(Loader.java:937)
+	at org.hibernate.loader.Loader.doQueryAndInitializeNonLazyCollections(Loader.java:340)
+	at org.hibernate.loader.Loader.doList(Loader.java:2695)
+	at org.hibernate.loader.Loader.doList(Loader.java:2678)
+	at org.hibernate.loader.Loader.listIgnoreQueryCache(Loader.java:2512)
+	at org.hibernate.loader.Loader.list(Loader.java:2507)
+	at org.hibernate.loader.hql.QueryLoader.list(QueryLoader.java:504)
+	at org.hibernate.hql.internal.ast.QueryTranslatorImpl.list(QueryTranslatorImpl.java:396)
+	at org.hibernate.engine.query.spi.HQLQueryPlan.performList(HQLQueryPlan.java:224)
+	at org.hibernate.internal.SessionImpl.list(SessionImpl.java:1538)
+	at org.hibernate.query.internal.AbstractProducedQuery.doList(AbstractProducedQuery.java:1561)
+	at org.hibernate.query.internal.AbstractProducedQuery.list(AbstractProducedQuery.java:1529)
+	... 12 more
+Caused by: org.h2.jdbc.JdbcSQLException: Table "STATION" not found; SQL statement:
+select count(*) as col_0_0_ from Station station0_ [42102-196]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.command.Parser.readTableOrView(Parser.java:5552)
+	at org.h2.command.Parser.readTableFilter(Parser.java:1266)
+	at org.h2.command.Parser.parseSelectSimpleFromPart(Parser.java:1946)
+	at org.h2.command.Parser.parseSelectSimple(Parser.java:2095)
+	at org.h2.command.Parser.parseSelectSub(Parser.java:1940)
+	at org.h2.command.Parser.parseSelectUnion(Parser.java:1755)
+	at org.h2.command.Parser.parseSelect(Parser.java:1743)
+	at org.h2.command.Parser.parsePrepared(Parser.java:449)
+	at org.h2.command.Parser.parse(Parser.java:321)
+	at org.h2.command.Parser.parse(Parser.java:293)
+	at org.h2.command.Parser.prepareCommand(Parser.java:258)
+	at org.h2.engine.Session.prepareLocal(Session.java:578)
+	at org.h2.engine.Session.prepareCommand(Session.java:519)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1204)
+	at org.h2.jdbc.JdbcPreparedStatement.<init>(JdbcPreparedStatement.java:73)
+	at org.h2.jdbc.JdbcConnection.prepareStatement(JdbcConnection.java:288)
+	at com.zaxxer.hikari.pool.ProxyConnection.prepareStatement(ProxyConnection.java:311)
+	at com.zaxxer.hikari.pool.HikariProxyConnection.prepareStatement(HikariProxyConnection.java)
+	at org.hibernate.engine.jdbc.internal.StatementPreparerImpl$5.doPrepare(StatementPreparerImpl.java:146)
+	at org.hibernate.engine.jdbc.internal.StatementPreparerImpl$StatementPreparationTemplate.prepareStatement(StatementPreparerImpl.java:172)
+	... 28 more
+12:51:09,068 FATAL ~ 
+
+@7jmcd91l0
+Failed to start
+
+Oops: PersistenceException
+Unexpected error : Unexpected Error, caused by exception PersistenceException: org.hibernate.exception.SQLGrammarException: could not prepare statement
+
+play.exceptions.UnexpectedException: Unexpected Error
+	at play.jobs.Job.onException(Job.java:180)
+	at play.jobs.Job.call(Job.java:250)
+	at Invocation.Job(Play!)
+Caused by: javax.persistence.PersistenceException: org.hibernate.exception.SQLGrammarException: could not prepare statement
+	at org.hibernate.internal.ExceptionConverterImpl.convert(ExceptionConverterImpl.java:154)
+	at org.hibernate.internal.ExceptionConverterImpl.convert(ExceptionConverterImpl.java:181)
+	at org.hibernate.query.internal.AbstractProducedQuery.list(AbstractProducedQuery.java:1538)
+	at org.hibernate.query.internal.AbstractProducedQuery.getSingleResult(AbstractProducedQuery.java:1577)
+	at play.db.jpa.JPQL.count(JPQL.java:31)
+	at models.Station.count(Station.java)
+	at views.Bootstrap.doJob(Bootstrap.java:12)
+	at play.jobs.Job.doJobWithResult(Job.java:64)
+	at play.jobs.Job$2.apply(Job.java:224)
+	at play.db.jpa.JPA.withTransaction(JPA.java:285)
+	at play.db.jpa.JPA.withinFilter(JPA.java:238)
+	at play.db.jpa.JPAPlugin$TransactionalFilter.withinFilter(JPAPlugin.java:304)
+	at play.jobs.Job.withinFilter(Job.java:201)
+	at play.jobs.Job.call(Job.java:220)
+	... 1 more
+Caused by: org.hibernate.exception.SQLGrammarException: could not prepare statement
+	at org.hibernate.exception.internal.SQLStateConversionDelegate.convert(SQLStateConversionDelegate.java:106)
+	at org.hibernate.exception.internal.StandardSQLExceptionConverter.convert(StandardSQLExceptionConverter.java:42)
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:113)
+	at org.hibernate.engine.jdbc.internal.StatementPreparerImpl$StatementPreparationTemplate.prepareStatement(StatementPreparerImpl.java:182)
+	at org.hibernate.engine.jdbc.internal.StatementPreparerImpl.prepareQueryStatement(StatementPreparerImpl.java:148)
+	at org.hibernate.loader.Loader.prepareQueryStatement(Loader.java:1990)
+	at org.hibernate.loader.Loader.executeQueryStatement(Loader.java:1920)
+	at org.hibernate.loader.Loader.executeQueryStatement(Loader.java:1898)
+	at org.hibernate.loader.Loader.doQuery(Loader.java:937)
+	at org.hibernate.loader.Loader.doQueryAndInitializeNonLazyCollections(Loader.java:340)
+	at org.hibernate.loader.Loader.doList(Loader.java:2695)
+	at org.hibernate.loader.Loader.doList(Loader.java:2678)
+	at org.hibernate.loader.Loader.listIgnoreQueryCache(Loader.java:2512)
+	at org.hibernate.loader.Loader.list(Loader.java:2507)
+	at org.hibernate.loader.hql.QueryLoader.list(QueryLoader.java:504)
+	at org.hibernate.hql.internal.ast.QueryTranslatorImpl.list(QueryTranslatorImpl.java:396)
+	at org.hibernate.engine.query.spi.HQLQueryPlan.performList(HQLQueryPlan.java:224)
+	at org.hibernate.internal.SessionImpl.list(SessionImpl.java:1538)
+	at org.hibernate.query.internal.AbstractProducedQuery.doList(AbstractProducedQuery.java:1561)
+	at org.hibernate.query.internal.AbstractProducedQuery.list(AbstractProducedQuery.java:1529)
+	... 12 more
+Caused by: org.h2.jdbc.JdbcSQLException: Table "STATION" not found; SQL statement:
+select count(*) as col_0_0_ from Station station0_ [42102-196]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.command.Parser.readTableOrView(Parser.java:5552)
+	at org.h2.command.Parser.readTableFilter(Parser.java:1266)
+	at org.h2.command.Parser.parseSelectSimpleFromPart(Parser.java:1946)
+	at org.h2.command.Parser.parseSelectSimple(Parser.java:2095)
+	at org.h2.command.Parser.parseSelectSub(Parser.java:1940)
+	at org.h2.command.Parser.parseSelectUnion(Parser.java:1755)
+	at org.h2.command.Parser.parseSelect(Parser.java:1743)
+	at org.h2.command.Parser.parsePrepared(Parser.java:449)
+	at org.h2.command.Parser.parse(Parser.java:321)
+	at org.h2.command.Parser.parse(Parser.java:293)
+	at org.h2.command.Parser.prepareCommand(Parser.java:258)
+	at org.h2.engine.Session.prepareLocal(Session.java:578)
+	at org.h2.engine.Session.prepareCommand(Session.java:519)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1204)
+	at org.h2.jdbc.JdbcPreparedStatement.<init>(JdbcPreparedStatement.java:73)
+	at org.h2.jdbc.JdbcConnection.prepareStatement(JdbcConnection.java:288)
+	at com.zaxxer.hikari.pool.ProxyConnection.prepareStatement(ProxyConnection.java:311)
+	at com.zaxxer.hikari.pool.HikariProxyConnection.prepareStatement(HikariProxyConnection.java)
+	at org.hibernate.engine.jdbc.internal.StatementPreparerImpl$5.doPrepare(StatementPreparerImpl.java:146)
+	at org.hibernate.engine.jdbc.internal.StatementPreparerImpl$StatementPreparationTemplate.prepareStatement(StatementPreparerImpl.java:172)
+	... 28 more

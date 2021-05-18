@@ -20,10 +20,10 @@ POST    /stations/{id}/addReading                   StationCtrl.addReading
 POST    /dashboard/addStation                       Dashboard.addStation
 
 # Ignore favicon requests
-GET     /favicon.ico                            404
+GET     /favicon.ico                                404
 
 # Map static resources from the /app/public folder to the /public path
-GET     /public/                                staticDir:public
+GET     /public/                                    staticDir:public
 
 # Catch all
-*       /{controller}/{action}                  {controller}.{action}
+GET     /{path}                                     dashboard.errorPage(key:'path')

@@ -3,14 +3,14 @@
   <header class="item"> WeatherTop Stations</header>
   <div class="right menu">
     #{if session.contains("logged_in_Memberid")}
-      <a id="dashboard" class="item" href="/dashboard"> Dashboard </a>
-      <a id="aboutLoggedIn" class="item" href="/about"> About </a>
-      <a id="logout" class="item" href="/logout"> Logout </a>
+    <a id="dashboard" class="item" href="/dashboard"> Dashboard </a>
+    <a id="aboutLoggedIn" class="item" href="/about"> About </a>
+    <a id="logout" class="item" href="/logout"> Logout </a>
     #{/if}
     #{if session.isEmpty()}
-      <a id="about" class="item" href="/about"> About </a>
-      <a id="signup" class="item" href="/signup"> Signup </a>
-      <a id="login" class="item" href="/login"> Login </a>
+    <a id="about" class="item" href="/about"> About </a>
+    <a id="signup" class="item" href="/signup"> Signup </a>
+    <a id="login" class="item" href="/login"> Login </a>
     #{/if}
 
   </div>

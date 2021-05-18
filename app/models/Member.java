@@ -8,13 +8,15 @@ import javax.persistence.OneToMany;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Class to hold member details
+ */
 @Entity
 public class Member extends Model {
   public String firstname;
   public String lastname;
   public String email;
   public String password;
-
   @OneToMany(cascade = CascadeType.ALL)
   public List<Station> stations = new ArrayList<Station>();
 
