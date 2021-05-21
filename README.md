@@ -1,5 +1,9 @@
-# play-template-1
+# Weather-tops application
 
-This is a sample starter project for this course:
+This is a web application that allows users to add weather readings of different
+locations to their account which can be accessed later at any time. 
+A summary display and trends in weather readings are automatically generated.
 
-- [Web Development](https://tutors-design.netlify.com/course/wit-hdip-comp-sci-2020-web-development.netlify.com)
+Author: Vinod Yadav 2021
+
+
