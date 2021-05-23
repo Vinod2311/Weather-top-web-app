@@ -219,10 +219,12 @@ public class StationAnalytics {
   }
 
   public static void setMinWindBeaufort(Station station) {
-    double minValue = 11.0;
-
+    double minValue = 0.0;
+    if (station.readings.size() != 0) {
+      minValue = station.readings.get(0).windBeaufort;
+    }
     for (Reading reading : station.readings) {
-      if ((reading.windBeaufort < minValue) && (reading.windBeaufort > 0)) {
+      if (reading.windBeaufort < minValue) {
         minValue = reading.windBeaufort;
       }
     }
